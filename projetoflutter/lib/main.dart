@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projetoflutter/pages/login.dart';
+import 'package:projetoflutter/pages/Dash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +15,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Login());
+    return MaterialApp(home: Dash());
   }
 }
