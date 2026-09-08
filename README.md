@@ -20,3 +20,4 @@ Miguel Duque - Dev front-end
 
 Maria Silva - Scrum Master 
 
+# Sprint Front-End Trello
