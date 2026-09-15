@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:projetoflutter/pages/perfil.dart';
 
 class Dash extends StatefulWidget {
   const Dash({super.key});
@@ -9,91 +9,51 @@ class Dash extends StatefulWidget {
 }
 
 class _DashState extends State<Dash> {
-  int selectedIndex = 0;
-
-  final menus = const [
-    {'titulo': 'MTTR', 'descricao': 'Tempo médio para reparo'},
-    {'titulo': 'MTBF', 'descricao': 'Tempo médio entre falhas'},
-    {'titulo': 'OEE', 'descricao': 'Eficiência geral do equipamento'},
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(backgroundColor: Colors.black),
-        drawer: Drawer(
-          surfaceTintColor: Colors.white,
-          child: Column(
-            children: [
-              CircleAvatar(child: Icon(Icons.person, color: Colors.black)),
-            ],
-          ),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFF6B0000), Color(0xFF0F0F0F), Color(0xFF0A0A0A)],
+          stops: [0.0, 0.22, 1.0],
         ),
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(color: Colors.black),
-          child: SafeArea(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Spacer(),
-                    //
-                    const SizedBox(width: 5),
-                  ],
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: Center(child: Image.asset('assets/nome.png', height: 70)),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Perfil()),
+                  );
+                },
+                child: const CircleAvatar(
+                  backgroundColor: Colors.white24,
+                  child: Icon(Icons.person, color: Colors.white),
                 ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  child: CarouselSlider(
-                    options: CarouselOptions(autoPlay: true),
-                    items: menus.map((menu) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 150,
-                                  width: 150,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                        255,
-                                        53,
-                                        53,
-                                        53,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
+              ),
+            ),
+          ],
+        ),
 
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.lock_clock_outlined),
-                                        Text(
-                                          '    ${menu['titulo']}',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ],
+        drawer: const Drawer(),
+
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [],
             ),
           ),
         ),
