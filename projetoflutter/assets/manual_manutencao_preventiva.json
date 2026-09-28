@@ -1,0 +1,541 @@
+{
+  "titulo": "Manual de manutenção preventiva (baseado em horas de uso)",
+  "unidade_de_frequencia": "horas de uso",
+  "intervalos_horas": [
+    700,
+    4200,
+    8400
+  ],
+  "componentes": [
+    {
+      "componente": "CARRO PRINCIPAL (AVENTAL)",
+      "atividades": [
+        "Limpar guias prismáticas interna e externas",
+        "Lubrificar rasgos trapezoidais pontos de contato",
+        "Conferir folgas no deslocamento",
+        "Revisão completa do sistema de avanço",
+        "Retifica das guias se necessário",
+        "Limpar superficies de contato",
+        "Aplicar óleo leve",
+        "Conferir suavidade no movimento"
+      ]
+    },
+    {
+      "componente": "CARRO TRANSVERSAL",
+      "atividades": [
+        "Ajustar folgas",
+        "Revisão completa do mecanismo de avanço transversal",
+        "Substituição de peças desgastadas",
+        "Limpar e lubrificar guias e parafusos",
+        "Conferir fixação da ferramenta"
+      ]
+    },
+    {
+      "componente": "CARRO LONGITUDINAL (SUPERIOR)",
+      "atividades": [
+        "Inspecionar desgates das guias e parafusos",
+        "Revisão completa do carrinho superior",
+        "Substituição de buchas",
+        "Limpeza diária para remover cavacos e óleo velho",
+        "Aplicar lubrificação leve"
+      ]
+    },
+    {
+      "componente": "GUIAS PRISMÁTICAS",
+      "atividades": [
+        "Conferir paralelismo e desgaste",
+        "Retifica das guias prismáticas",
+        "Revisão estrutural para garantir alinhamento perfeito",
+        "Verificação e conservação do eixo principal"
+      ]
+    },
+    {
+      "componente": "EIXO ÁRVORE",
+      "atividades": [
+        "Medir folgas nos rolamentos e reapertar fixações",
+        "Desmontar para inspeção completa e substituir rolamentos se necessário",
+        "Lubrificação e manutenção do sistema de engrenagens"
+      ]
+    },
+    {
+      "componente": "CAIXAS DE VELOCIDADES",
+      "atividades": [
+        "Trocar óleo lubrificante e limpar filtros",
+        "Revisão geral das engrenagens e substituição de peças desgastadas",
+        "Controle manual das velocidades"
+      ]
+    },
+    {
+      "componente": "ALAVANCAS DE CÂMBIO",
+      "atividades": [
+        "Lubrificar articulações e verificar desgastes",
+        "Substituir buchas ou molas se apresentarem folga excessiva",
+        "Acessório que prende a peça"
+      ]
+    },
+    {
+      "componente": "PLACA DE FIXAÇÃO (3 CASTANHAS)",
+      "atividades": [
+        "Limpar residuos, verificar aperto e inspecionar desgastes das garras",
+        "Retificar ou sebstituir se houver de formações",
+        "Sistema que inverte o sentido de giro"
+      ]
+    },
+    {
+      "componente": "MECANISMO DE REVERSÃO",
+      "atividades": [
+        "Lubrificar engrenagens internas",
+        "Revisar e substituir engrenagens ou molas danificadas",
+        "Garantia de lubrificação constante"
+      ]
+    },
+    {
+      "componente": "SISTEMA DE LUBRIFICAÇÃO",
+      "atividades": [
+        "Trocar óleo e limpar reservatório",
+        "Revisão completa da bomba e substituição de vedantes",
+        "Conferir desgaste da superficie de deslizamento e ajustar folgas"
+      ]
+    },
+    {
+      "componente": "BASE (CABEÇOTE FIXO)",
+      "atividades": [
+        "Revisão completa da base, retifica se necessário e reaplicação de proteção anticorrosiva",
+        "Verificar alinhamento e fixação ao barramento"
+      ]
+    },
+    {
+      "componente": "CORPO (CABEÇOTE FIXO)",
+      "atividades": [
+        "Revisão estrutural completae pintura preventiva contra ferrugem",
+        "Conferir desgastes interno e folgas, ajustar ou substituir buchas"
+      ]
+    },
+    {
+      "componente": "MANGOTE",
+      "atividades": [
+        "Revisão completa, desmontagem e substituição de componentes desgastados",
+        "Conferir folgas e funcionamento suave, reapertar fixação"
+      ]
+    },
+    {
+      "componente": "VOLANTE",
+      "atividades": [
+        "Revisão completa do mecanismo de acionamento e substituição de peças desgastadas",
+        "Inspecionar desgastes das pinças, mandris ou buchas, substituir se necessário"
+      ]
+    },
+    {
+      "componente": "DISPOSITIVOS DE FIXAÇÃO",
+      "atividades": [
+        "Revisão completa dos dispositivos e substituição dos elementos de fixação danificados",
+        "Inspeção visual: Verificar desgastesnos dentes",
+        "Limpeza: Remover cavacos, poeira e óleo velho",
+        "Lubrificação: Aplicar óleo ISO VG 68-100",
+        "Verificação de fixação: Reapertar parafusos",
+        "Teste funcional: Rodar sistema em diferentes combinações",
+        "Inspeção detalhada: Medir folga entre dentes e substituir engrenagens desgastadas",
+        "Verificação dos eixos: Inspecionar alinhamento e folga"
+      ]
+    },
+    {
+      "componente": "ENGRENAGENS (MOTORA, CONDUZIDA E INTERMEDIÁRIAS)",
+      "atividades": [
+        "Lubrificação completa: Renovar óleo",
+        "Checagem da placa da placa/lyra: Avaliar integridade estrutural",
+        "Documentação: Registrar folgas e ruidos",
+        "Desmontagem completa: Limpar engrenagens, eixos e placa.",
+        "Revisão das engrenagens: Substituir peças criticas",
+        "Revisão dos eixos: Substituir se houver empeno",
+        "Troca de óleo: Drenagem e reposição",
+        "Calibração geral: Alinhar engrenagense ajustar placa/lyra",
+        "Inspeção de desgaste e folga: Medir folga com indicador e ajustar porca dividida ou substituir meias-porcas",
+        "Verificação de Desalinhamento: Checar pontos de aperto ou torção irregular",
+        "Limpeza e Disciplina: Escovar e limpar o fuso a cada turno",
+        "Lubrificação diária: Aplicar óleo ISO VG 68-100 em camada leve",
+        "Teste funcional: Movimentar o carro em todo o barramemento",
+        "Inspeção das engrenagens: Verificar dentes quanto a desgaste ou lascas",
+        "Verificação de rolamentos: Inspecionar rolamentos de suportes"
+      ]
+    },
+    {
+      "componente": "FUSO E TREM DE ENGRENAGENS",
+      "atividades": [
+        "Checagem de alinhamento: medir desvio nos blocos em V e folga axial",
+        "Lubrificação completa: Renovar óleo do trem de engrenagens e aplicar lubrificante fresco",
+        "Documentação: Registrar valores",
+        "Desmontagem e revisão completa: Desmontar fuso e engrenagens para limpeza profunda",
+        "Substituição preventiva: Trocar fusos tortos ou engrenagens criticas",
+        "Revisão das roscas: Inspecionar roscas da porca e chavetas deslizantes",
+        "Troca de óleo: Drenagem completa e reposição conforme especificação",
+        "Calibração geral: Alinhar eixos",
+        "Inspeção visual: Verificar desgastes,folgas e trincas",
+        "Limpeza externa: Remover pó metálico, óleo velho e cavacos",
+        "Lubrificação leve: Aplicar óleo lubrificante conforme especificações",
+        "Verificação da alavanca: Garantir deslize correto entre posições 1 a 6",
+        "Desmontagem parcial: Abrir tampa para inspeção interna",
+        "Inspeção das Engrenagens: Checar dentes dos eixos A e D",
+        "Lubrificação completa: Substituir óleo da caixa"
+      ]
+    },
+    {
+      "componente": "CAIXA NORTON (ENGRENAGENS E ROSCAS)",
+      "atividades": [
+        "Verificação das Roscas: Inspecionar fixações e chavetas",
+        "Teste funcional: Rodar o torno em todas as 6 rotações",
+        "Desmontagem completa: Retirar e limpar todos os componentes",
+        "Revisão das Engrenagens: Medir folgas e substituir peças críticas",
+        "Revisão das roscas: Verificar integridade e substituir danificadas",
+        "Troca de óleo: Drenagem e reposição conforme especificação",
+        "Calibração Geral: Ajustar alinhamento dos eixos e engrenagens",
+        "Inspecionar visual: Verificar desgaste no disco/tambor e nas sapatas/pastilhas",
+        "Limpeza externa: remover pó metálico, óleo e residuos",
+        "Lubrificação leve: Aplicar óleo nos pontos móveis do acionamento e eixos",
+        "Verificação das molas de retorno: Garantir funcionamento correto",
+        "Teste funcional: Acionar freio diferentes velocidades",
+        "Inspeção detalhada das sapatas/pastilhas: Medir espessura e substituir se abaixo do limite",
+        "Verificação do disco/tambor: Checar desgastes, empeno ou trincas"
+      ]
+    },
+    {
+      "componente": "SISTEMAS DE FREIO (DISCO/TAMBOR, SAPATAS/PASTILHA S. MECANISMO DE ACIONAMENTO",
+      "atividades": [
+        "Checagem do mecanismo de acionamento: Ajustar folgas",
+        "Lubrificação completa: Renovar lubrificação dos pontos móveis",
+        "Inspeção elétrica/eletromagnética: Verificar bobina, contatos e cabos",
+        "Desmontagem e Revisão completa: Desmontar disco/tambor, sapatas/pastilhas e molas",
+        "Substituição preventiva: Trocar pastilhas/sapatas e molas críticas",
+        "Revisão do sistema de transmissão: Inspecionar eixo/acoplamentoe substituir se necessário",
+        "Revisão elétrica/eletromagnética: Testar bobina, contatore sistema de controle",
+        "Calibração geral: Ajustar acionamento e retorno para resposta rápida e segura",
+        "Inspeção visual: Verificar cabos, conexões e sinais de aquecimento",
+        "Testes dos elementos de comando: Acionar comutadores (S4,S6,S12,S13) e chaves limite (S1,S2,S5,S7,S8)",
+        "Verificação de sinalização Checar lâmpadas (H1) e luminária (E1)",
+        "Lubrificação leve: Aplicar óleo nos pontos móveis",
+        "Teste funcional: ligar/desligar motor principal e refrigeração",
+        "Inspeção dos fusíveis: Verificar F1,F2,F4,F5, substituir se necessário",
+        "Verificação dos relés bimetálicos: Testar F6 E F7"
+      ]
+    },
+    {
+      "componente": "PAINEL ELÉTRICO (CONTATORES,FUSÍVEIS, RELÉS, TRANSFORMADOR, CABOS E CHAVES DE COMANDO)",
+      "atividades": [
+        "Checagem dos contatores: Inspecionar K1,K2,K3 e K4",
+        "Inspeção do transformador de comando: Avaliar T1",
+        "Limpeza interna: Remover poeira e residuos dos painéis",
+        "Revisão completa: Desmontar e inspecionar todos os componentes",
+        "Substituição preventiva: Trocar fusíveis, relés e contatores críticos",
+        "Teste de isolamento: Medir resistência dos cabos e motores (M1,M2,M3)",
+        "Revisão das chaves de segurança: Inspecionar S1,S2,S5,S7 e S8",
+        "Calibração geral: Ajustar relés e disjuntores para valores corretos",
+        "( Ver item Reservatório)"
+      ]
+    },
+    {
+      "componente": "FLUIDO DE CORTE",
+      "atividades": [
+        "Troca do fluido de corte: Substituir completamente o líquido, evitando contaminação e perda de eficiência",
+        "Inspeção: Verificar nível, estado interno e presença de incrustações, limpar se necessário"
+      ]
+    },
+    {
+      "componente": "RESERVATÓRIO",
+      "atividades": [
+        "Inspeção estrutural: Verificar corrosão ou fissuras, realizar pintura ou reparo se necessário",
+        "Verificação: Checar funcionamento, ruídos, e vazamentos, aplicar lubrificação nos mancais, se aplicável"
+      ]
+    },
+    {
+      "componente": "BOMBA DE REFRIGERAÇÃO",
+      "atividades": [
+        "Revisão completa:Desmontar, limpar e substituir peças desgastadas (vedações, rolamentos)",
+        "Verificar rachaduras, entupimentos ou vazamentos"
+      ]
+    },
+    {
+      "componente": "TUBULAÇÕES E MANGUEIRAS",
+      "atividades": [
+        "Revisão das tubulações: Substituir componentes com desgastes crítico ou deformações",
+        "Limpeza dos filtros: Remover cavacos e impurezas acumuladas"
+      ]
+    },
+    {
+      "componente": "FILTROS",
+      "atividades": [
+        "( Substituir se necessário durante a revisão)",
+        "Bicos direcionadores: Garantir que o jato de fluido esteja corretamente direcinado à área de corte"
+      ]
+    },
+    {
+      "componente": "VÁLVULAS E BICOS",
+      "atividades": [
+        "Calibração geral: Ajustar válvulas e direcionadores para garantir fluxo ideal e cobertura uniforme na usinagem",
+        "Teste de retorno: Confirmar que o fluido retorna adequadamente ao reservatório"
+      ]
+    },
+    {
+      "componente": "SISTEMA DE RETORNO",
+      "atividades": [
+        "(Acompanha a revisão estrutural e limpeza)"
+      ]
+    },
+    {
+      "componente": "S4 - COMUTADOR MOTOR / REFRIGERAÇÃO",
+      "atividades": [
+        "Testar funcionamento, verificar contatos elétricos e limpar residuos"
+      ]
+    },
+    {
+      "componente": "S6 - COMUTADOR MOTOR / COPIADOR",
+      "atividades": [
+        "Conferir acionamento, inspecionar desgastes mecânico e limpeza"
+      ]
+    },
+    {
+      "componente": "H1 - LÂMPADA INDICADORA / MOTOR PRINCIPAL",
+      "atividades": [
+        "Testar funcionamento, substituir se necessário"
+      ]
+    },
+    {
+      "componente": "X2 - TOMADA PAINEL DE COMANDO",
+      "atividades": [
+        "Verificar continuidade elétrica, fixação e limpeza"
+      ]
+    },
+    {
+      "componente": "Q1 - CHAVE GERAL",
+      "atividades": [
+        "Verificar funcionamento, limpar contatose inspecionar desgastes"
+      ]
+    },
+    {
+      "componente": "QM4 - DISJUNTOR MOTOR REFRIGERAÇÃO",
+      "atividades": [
+        "Testar disparo, inspecionar conexões e limpar pó/residuos"
+      ]
+    },
+    {
+      "componente": "K1 - CONTATOR COMANDO GERAL",
+      "atividades": [
+        "Inspecionar contatos, verificar aquecimentoe ruídos anormais"
+      ]
+    },
+    {
+      "componente": "K2 - CONTATOR MOTOR PRINCIPAL ESQUERDA",
+      "atividades": [
+        "Testar acionamento, limpar contatos e verificar fixação"
+      ]
+    },
+    {
+      "componente": "K3 - CONTATOR MOTOR PRINCIPA DIREITA",
+      "atividades": [
+        "Conferir funcionamento e limpeza dos contatos e verificar fixação"
+      ]
+    },
+    {
+      "componente": "K4 - CONTATOR MOTOR REFRIGERAÇÃO",
+      "atividades": [
+        "Conferir integridade, substituir se necessário , limpar alojamentos"
+      ]
+    },
+    {
+      "componente": "F1 - FUSIVEIS MOTOR PRINCIPAL",
+      "atividades": [
+        "Conferir a integridade substituir se necessário, limpar alojamentos"
+      ]
+    },
+    {
+      "componente": "F2 - FUSIVEIS MOTOR REFRIGERAÇÃO",
+      "atividades": [
+        "Conferir a integridade substituir se necessário, limpar alojamentos"
+      ]
+    },
+    {
+      "componente": "F4 - FUSIVEIS PRIMÁRIO TRANSFORMADOR",
+      "atividades": [
+        "Conferir a integridade substituir se necessário, limpar alojamentos"
+      ]
+    },
+    {
+      "componente": "F5 - FUSIVEIS SECUNDÁRIO TRANSFORMADOR",
+      "atividades": [
+        "Conferir a integridade substituir se necessário, limpar alojamentos"
+      ]
+    },
+    {
+      "componente": "F6 - RELÉ BIMETÁLICO MOTOR PRINCIPAL",
+      "atividades": [
+        "Testar disparo térmico, verificar regulageme limpeza"
+      ]
+    },
+    {
+      "componente": "F7 - RELÉ BIMETÁLICO MOTOR PRINCIPAL",
+      "atividades": [
+        "Testar disparo térmico, verificar regulageme limpeza"
+      ]
+    },
+    {
+      "componente": "T1 - TRANSFORMADORDE COMANDO",
+      "atividades": [
+        "Inspecionar conexões, medir tensão de saida e verificar"
+      ]
+    },
+    {
+      "componente": "X3 - TOMADAS LEITOR DE COORDENADAS",
+      "atividades": [
+        "Verificar fixação, limpeza e continuidade elétrica (se instalado)"
+      ]
+    },
+    {
+      "componente": "S1 - CHAVE LIMITE TAMPA DO RECÂMBIO",
+      "atividades": [
+        "Testar funcionamento, inspecionar desgaste mecânico"
+      ]
+    },
+    {
+      "componente": "S2 - CHAVE LIMITE DO FREIO",
+      "atividades": [
+        "Conferir acionamento, verificar continuidade elétrica e limpeza"
+      ]
+    },
+    {
+      "componente": "S12 - COMUTADOR ROTAÇÃO DO EIXO",
+      "atividades": [
+        "Testar posições de comando, inspecionar contatos e fixação"
+      ]
+    },
+    {
+      "componente": "S13 - COMUTADOR ROTAÇÃO DO EIXO",
+      "atividades": [
+        "Testar posições de comando, inspecionar contatos e fixação"
+      ]
+    },
+    {
+      "componente": "S5 - CHAVE LIMITE LUMINÁRIA",
+      "atividades": [
+        "Conferir funcionamento e substituir se necessário"
+      ]
+    },
+    {
+      "componente": "S7 - CHAVE LIMITE CURSO LONGITUDINAL",
+      "atividades": [
+        "Testar acionamento, inspecionar desgastes e limpeza"
+      ]
+    },
+    {
+      "componente": "S8 - CHAVE LIMITE PROTEÇÃO DA PLACA",
+      "atividades": [
+        "Conferir funcionamento, verificar continuidade elétrica e limpeza"
+      ]
+    },
+    {
+      "componente": "X1 - TOMADA MOTOR COPIADOR",
+      "atividades": [
+        "Verificar fixação, limpeza e continuidade elétrica"
+      ]
+    },
+    {
+      "componente": "E1 - LUMINÁRIA",
+      "atividades": [
+        "Conferir funcionamento substituir lâmpada se necessário"
+      ]
+    },
+    {
+      "componente": "M1 - MOTOR PRINCIPAL",
+      "atividades": [
+        "Inspecionar conexões elétricas, verificar aquecimento e ruídos"
+      ]
+    },
+    {
+      "componente": "M1 - MOTOR DE REFRIGERAÇÃO",
+      "atividades": [
+        "Conferir funcionamento , inspecionar conexões e limpeza"
+      ]
+    },
+    {
+      "componente": "M1 - MOTOR DO COPIADOR",
+      "atividades": [
+        "Conferir funcionamento , inspecionar conexões e limpeza"
+      ]
+    },
+    {
+      "componente": "BOTÃO DE PARADA DE EMERGÊNCIA",
+      "atividades": [
+        "Testar funcionamento em todas as posições, substituir se houver falha ou desgastes"
+      ]
+    },
+    {
+      "componente": "PROTEÇÃO FIXAS (CARENAGENS)",
+      "atividades": [
+        "Verificar integridade estrutural e fixação"
+      ]
+    },
+    {
+      "componente": "PROTEÇÕES MÓVEIS COM INTERTRAVAMENTO",
+      "atividades": [
+        "Checar se o torno não funciona com proteção aberta, inspecionar sensores e contatos"
+      ]
+    },
+    {
+      "componente": "CHAPAS/ VISORES DE ACRÍLICO",
+      "atividades": [
+        "Avaliar transparência e trincas, substituir se houver danos"
+      ]
+    },
+    {
+      "componente": "CHAVES DE SEGURANÇA (FIM DE CURSO)",
+      "atividades": [
+        "Testar funcionamento garantir que interrompem a operação"
+      ]
+    },
+    {
+      "componente": "SISTEMA DE FRENAGEM",
+      "atividades": [
+        "Verificar resposta rápida e ausência de ruídos, lubrificar pontos móveis"
+      ]
+    },
+    {
+      "componente": "DISJUNTORES E FUSÍVEIS E RELÉS",
+      "atividades": [
+        "Inspecionar aquecimento,desgaste e funcionamento correto"
+      ]
+    },
+    {
+      "componente": "COMANDOS SEGUROS (BOTOEIRAS E PAINEL)",
+      "atividades": [
+        "Testar botoeiras e painel, substituir botões com falha"
+      ]
+    },
+    {
+      "componente": "SISTEMA DE REARME",
+      "atividades": [
+        "Confirmar que não há religamento automático após desligamento"
+      ]
+    },
+    {
+      "componente": "SINALIZAÇÃO DE SEGURANÇA",
+      "atividades": [
+        "Verificar luzes indicadoras e etiquetas, substituir lâmpadas queimadas"
+      ]
+    },
+    {
+      "componente": "LINHA DE VIDA (QUANDO APLICÁVEL)",
+      "atividades": [
+        "Inspecionar cabos e pontos de fixação, substituir componentes danificados"
+      ]
+    },
+    {
+      "componente": "ALINHAMENTO DO BARRAMENTO",
+      "atividades": [
+        "Relógio comparador"
+      ]
+    },
+    {
+      "componente": "NIVELAMENTO DO BARRAMENTO",
+      "atividades": [
+        "Nível de precisão"
+      ]
+    }
+  ]
+}
