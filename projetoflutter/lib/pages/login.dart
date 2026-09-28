@@ -21,72 +21,72 @@ class _LoginState extends State<Login> {
       TextEditingController();
 
   Future<void> _handleLogin() async {
-  final email = _emailController.text.trim();
-  final senha = _senhaController.text;
+    final email = _emailController.text.trim();
+    final senha = _senhaController.text;
 
-  if (email.isEmpty || senha.isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Preencha o e-mail e a senha.'),
-      ),
-    );
-    return;
-  }
-
-  setState(() {
-    _isLoading = true;
-  });
-
-  try {
-    final response = await http.post(
-      Uri.parse('http://localhost:3000/auth/login'),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'email': email,
-        'senha': senha,
-      }),
-    );
-
-    final data = jsonDecode(response.body);
-
-    if (!mounted) return;
-
-    if (response.statusCode == 200 && data['sucesso'] == true) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const Dash(),
+    if (email.isEmpty || senha.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Preencha o e-mail e a senha.'),
         ),
       );
-    } else {
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final response = await http.post(
+        Uri.parse('http://localhost:3000/auth/login'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'email': email,
+          'senha': senha,
+        }),
+      );
+
+      final data = jsonDecode(response.body);
+
+      if (!mounted) return;
+
+      if (response.statusCode == 200 && data['sucesso'] == true) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Dash(),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              data['mensagem'] ?? 'E-mail ou senha incorretos.',
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text(
-            data['mensagem'] ?? 'E-mail ou senha incorretos.',
+            'Não foi possível conectar ao servidor.',
           ),
         ),
       );
-    }
-  } catch (e) {
-    if (!mounted) return;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Não foi possível conectar ao servidor.',
-        ),
-      ),
-    );
-  } finally {
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -104,20 +104,27 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(24.0),
               child: Column(
                 children: [
-                  Image.asset('assets/nome.png', width: 200, height: 200),
+                  Image.asset(
+                    'assets/nome.png',
+                    width: 200,
+                    height: 200,
+                  ),
                   const SizedBox(height: 40),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Bem-vindo(a)!',
-                        style: TextStyle(color: Colors.white, fontSize: 17),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Faça seu login para acessar o sistema de ',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -125,49 +132,66 @@ class _LoginState extends State<Login> {
                   ),
                   Row(
                     children: [
-                      Text('manuteção', style: TextStyle(color: Colors.white)),
+                      const Text(
+                        'manuteção',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 60),
+                  const SizedBox(height: 60),
                   TextField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person, color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
                       labelText: 'E-mail',
                       hintStyle: TextStyle(color: Colors.white),
                       labelStyle: TextStyle(color: Colors.white),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextField(
                     controller: _senhaController,
                     obscureText: true,
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.password, color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.password,
+                        color: Colors.white,
+                      ),
                       labelText: 'Senha',
                       hintStyle: TextStyle(color: Colors.white),
                       suffixIcon: IconButton(
-                        onPressed: () {},
+                        onPressed: null,
                         icon: Icon(Icons.visibility_off),
                       ),
                       labelStyle: TextStyle(color: Colors.white),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                     ),
@@ -176,15 +200,15 @@ class _LoginState extends State<Login> {
                     children: [
                       TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'Cadastre-se',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'Esqueceu a senha?',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -196,19 +220,24 @@ class _LoginState extends State<Login> {
                     width: 120,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0XFFB00404),
+                        backgroundColor: const Color(0XFFB00404),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                        ),
                       ),
                       onPressed: _isLoading ? null : _handleLogin,
-                      child: Row(
+                      child: const Row(
                         children: [
                           Spacer(),
                           Icon(Icons.login, color: Colors.white),
                           SizedBox(width: 8),
-                          Text('Entrar', style: TextStyle(color: Colors.white)),
+                          Text(
+                            'Entrar',
+                            style: TextStyle(color: Colors.white),
+                          ),
                           Spacer(),
                         ],
                       ),
@@ -218,7 +247,6 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-
           if (_isLoading)
             Container(
               width: double.infinity,
