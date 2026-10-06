@@ -3,18 +3,7 @@
 
 # Problema
 
-A manutenção dos equipamentos do laboratório (tornos, fresadoras e furadeiras) ainda é
-feita de forma reativa, com ordens de serviço preenchidas em papel e sem padronização.
-Isso dificulta o controle do histórico de cada máquina e impede identificar com clareza
-quais equipamentos falham com mais frequência e por quê. O checklist de inspeção
-pré-operacional exigido pela NR-12 também é aplicado de forma manual e sem
-rastreabilidade, já que a maior parte das respostas é anônima, o que torna impossível
-saber quem realizou a inspeção ou desde quando um problema vem se repetindo. Além disso,
-não existe um plano de manutenção preventiva vinculado às horas reais de uso de cada
-máquina: os intervalos recomendados pelo fabricante existem apenas em documentos
-separados, sem serem cruzados com a operação diária. O resultado é uma manutenção
-corretiva, cara e feita apenas quando o problema já causou parada da máquina, sem
-visibilidade sobre o desempenho do parque de equipamentos como um todo.
+A manutenção dos equipamentos do laboratório (tornos, fresadoras e furadeiras) ainda é feita de forma reativa, com ordens de serviço preenchidas em papel e sem padronização. Isso dificulta o controle do histórico de cada máquina e impede identificar com clareza quais equipamentos falham com mais frequência e por quê. Além disso, não existe um plano de manutenção preventiva vinculado às horas reais de uso de cada máquina: os intervalos recomendados pelo fabricante existem apenas em documentos separados, sem serem cruzados com a operação diária. O resultado é uma manutenção corretiva, cara e feita apenas quando o problema já causou parada da máquina, sem visibilidade sobre o desempenho do parque de equipamentos como um todo.
 
 
 # Equipe
