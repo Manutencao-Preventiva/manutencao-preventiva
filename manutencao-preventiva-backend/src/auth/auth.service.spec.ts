@@ -70,13 +70,16 @@ describe('AuthService', () => {
       nome: 'Maria',
       email: 'maria@teste.com',
       senha: '$2b$10$hashMock',
+      gestor: true,
     });
     jest.spyOn(bcrypt, 'compare').mockResolvedValue(true as never);
 
     const result = await service.login('maria@teste.com', '123456');
 
     expect(result.sucesso).toBe(true);
+    expect(result.gestor).toBe(true);
     expect(result.usuario.nome).toBe('Maria');
     expect(result.usuario.email).toBe('maria@teste.com');
+    expect(result.usuario.gestor).toBe(true);
   });
 });

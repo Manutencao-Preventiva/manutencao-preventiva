@@ -2,8 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gif_view/gif_view.dart';
 import 'package:http/http.dart' as http;
-import 'package:projetoflutter/pages/Dash.dart';
+import 'package:projetoflutter/pages/Dashges.dart';
+import 'package:projetoflutter/pages/Dashope.dart';
 import 'package:projetoflutter/pages/cadastro.dart';
+
+import 'package:projetoflutter/session.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -52,15 +55,52 @@ class _LoginState extends State<Login> {
 
       if (!mounted) return;
 
-      if (response.statusCode == 200 && data['sucesso'] == true) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const Dash()),
-        );
+      if (response.statusCode == 200 &&
+          data is Map &&
+          data['sucesso'] == true) {
+        final gestor = _extractGestor(data);
+
+        if (data['usuario'] is Map) {
+          final userMap = data['usuario'] as Map;
+          AppSession.setUsuario(
+            idUsuario: userMap['id'] is int ? userMap['id'] as int : null,
+            nomeUsuario: (userMap['nome'] ?? email.split('@').first).toString(),
+            emailUsuario: (userMap['email'] ?? email).toString(),
+            gestor: gestor == true,
+            telefoneUsuario: userMap['telefone']?.toString(),
+          );
+        } else {
+          AppSession.setUsuario(
+            nomeUsuario: email.split('@').first,
+            emailUsuario: email,
+            gestor: gestor == true,
+          );
+        }
+
+        if (gestor == true) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const Dashges()),
+          );
+        } else if (gestor == false) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const Dash()),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Perfil do usuário não informado.')),
+          );
+        }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(data['mensagem'] ?? 'E-mail ou senha incorretos.'),
+            content: Text(
+              data is Map
+                  ? (data['mensagem'] ?? 'E-mail ou senha incorretos.')
+                        .toString()
+                  : 'E-mail ou senha incorretos.',
+            ),
           ),
         );
       }
@@ -77,6 +117,81 @@ class _LoginState extends State<Login> {
         });
       }
     }
+  }
+
+  bool? _extractGestor(dynamic payload) {
+    const gestorKeys = {
+      'gestor',
+      'isgestor',
+      'ehgestor',
+      'manager',
+      'ismanager',
+      'ehmanager',
+      'perfil',
+      'tipo',
+      'tipousuario',
+      'cargo',
+    };
+
+    if (payload is Map) {
+      for (final entry in payload.entries) {
+        final key = entry.key
+            .toString()
+            .toLowerCase()
+            .replaceAll('_', '')
+            .replaceAll('-', '')
+            .replaceAll(' ', '');
+        if (gestorKeys.contains(key)) {
+          final parsed = _parseBoolean(entry.value);
+          if (parsed != null) return parsed;
+        }
+      }
+
+      for (final value in payload.values) {
+        if (value is Map || value is List) {
+          final parsed = _extractGestor(value);
+          if (parsed != null) return parsed;
+        }
+      }
+    } else if (payload is List) {
+      for (final value in payload) {
+        final parsed = _extractGestor(value);
+        if (parsed != null) return parsed;
+      }
+    }
+
+    return null;
+  }
+
+  bool? _parseBoolean(dynamic value) {
+    if (value is bool) return value;
+    if (value is num) {
+      if (value == 1) return true;
+      if (value == 0) return false;
+      return null;
+    }
+
+    if (value is String) {
+      switch (value.trim().toLowerCase()) {
+        case 'true':
+        case '1':
+        case 'sim':
+        case 'yes':
+        case 'gestor':
+        case 'manager':
+          return true;
+        case 'false':
+        case '0':
+        case 'não':
+        case 'nao':
+        case 'no':
+        case 'operador':
+        case 'operator':
+          return false;
+      }
+    }
+
+    return null;
   }
 
   @override
@@ -151,7 +266,10 @@ class _LoginState extends State<Login> {
                     obscureText: obscureSenha,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.password, color: Colors.white),
+                      prefixIcon: const Icon(
+                        Icons.password,
+                        color: Colors.white,
+                      ),
                       labelText: 'Senha',
                       hintStyle: const TextStyle(color: Colors.white),
                       suffixIcon: IconButton(
@@ -161,7 +279,9 @@ class _LoginState extends State<Login> {
                           });
                         },
                         icon: Icon(
-                          obscureSenha ? Icons.visibility_off : Icons.visibility,
+                          obscureSenha
+                              ? Icons.visibility_off
+                              : Icons.visibility,
                           color: Colors.white,
                         ),
                       ),

@@ -13,4 +13,10 @@ export class Usuario {
 
   @Column()
   senha: string;
+
+  @Column({ type: 'boolean', default: false })
+  gestor: boolean;
+
+  @Column({ nullable: true })
+  telefone?: string;
 }

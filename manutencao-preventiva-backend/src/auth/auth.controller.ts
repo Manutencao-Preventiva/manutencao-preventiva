@@ -4,7 +4,9 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Param,
   Post,
+  Put,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
@@ -30,5 +32,23 @@ export class AuthController {
     @Body() body: { email: string; senha: string },
   ) {
     return this.authService.login(body.email, body.senha);
+  }
+
+  @Put('perfil')
+  async atualizarPerfil(
+    @Body()
+    body: {
+      id?: number;
+      email?: string;
+      nome?: string;
+      telefone?: string;
+    },
+  ) {
+    return this.authService.atualizarPerfil(body);
+  }
+
+  @Get('perfil/:email')
+  async obterPerfil(@Param('email') email: string) {
+    return this.authService.obterPerfil(email);
   }
 }
