@@ -33,7 +33,7 @@ Com base na auditoria realizada (verificação do `schema.sql`, teste da conexã
 
 ### Como a interface do Front-end vai conversar com a API
 
-O **Flutter** vai se comunicar com o **NestJS** usando o pacote **Dio**, enviando e recebendo os dados em **JSON**. A autenticação será feita com **JWT**.
+O **Flutter** vai se comunicar com o **NestJS** usando o pacote **HTTP**, enviando e recebendo os dados em **JSON**. A autenticação será feita com **JWT**.
 
 ### Plano de trabalho para manter o sincronismo técnico
 

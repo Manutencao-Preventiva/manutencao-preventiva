@@ -1,5 +1,30 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+
+class RegistroRecente {
+  final String id;
+  final String titulo;
+  final String equipamento;
+  final String operador;
+  final String turno;
+  final String curso;
+  final DateTime data;
+  final String status;
+  final String observacao;
+
+  RegistroRecente({
+    String? id,
+    this.titulo = 'Checklist NR-12',
+    required this.equipamento,
+    required this.operador,
+    required this.turno,
+    this.curso = '',
+    required this.data,
+    this.status = 'Concluído',
+    this.observacao = '',
+  }) : id = id ?? DateTime.now().millisecondsSinceEpoch.toString();
+}
 
 class AppSession {
   static int? id;
@@ -9,6 +34,19 @@ class AppSession {
   static String telefone = '(11) 98765-4321';
   static bool isGestor = false;
   static bool notificacoesAtivas = true;
+
+  static final ValueNotifier<List<RegistroRecente>> registrosRecentesNotifier =
+      ValueNotifier<List<RegistroRecente>>([]);
+
+  static List<RegistroRecente> get registrosRecentes =>
+      registrosRecentesNotifier.value;
+
+  static void adicionarRegistro(RegistroRecente registro) {
+    registrosRecentesNotifier.value = [
+      registro,
+      ...registrosRecentesNotifier.value,
+    ];
+  }
 
   static void setUsuario({
     int? idUsuario,

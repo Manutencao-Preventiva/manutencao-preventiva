@@ -31,3 +31,8 @@ flutter:
     - assets/image.png
     - assets/nome.png
     - assets/engrenagem_girando.gif
+    - assets/icone-alerta-triangular.png
+    - assets/icone-documento-linhas.png
+    - assets/icone-escudo-check.png
+    - assets/icone-fresadora-vertical.png
+    - assets/icone-torno-mecanico.png

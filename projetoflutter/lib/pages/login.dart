@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gif_view/gif_view.dart';
 import 'package:http/http.dart' as http;
 import 'package:projetoflutter/pages/Dashges.dart';
-import 'package:projetoflutter/pages/Dashope.dart';
 import 'package:projetoflutter/pages/cadastro.dart';
-
+import 'package:projetoflutter/pages/dash.dart';
 import 'package:projetoflutter/session.dart';
 
 class Login extends StatefulWidget {
@@ -76,20 +75,15 @@ class _LoginState extends State<Login> {
             gestor: gestor == true,
           );
         }
-
         if (gestor == true) {
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Dashges()),
-          );
-        } else if (gestor == false) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const Dash()),
+            MaterialPageRoute(builder: (context) => Dashges()),
           );
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Perfil do usuário não informado.')),
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Dash()),
           );
         }
       } else {
