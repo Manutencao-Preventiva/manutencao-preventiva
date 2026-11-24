@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projetoflutter/pages/Dashges.dart';
+import 'package:projetoflutter/pages/dashges.dart';
 import 'package:projetoflutter/pages/dash.dart';
 import 'package:projetoflutter/pages/login.dart';
 import 'package:projetoflutter/session.dart';
@@ -246,7 +246,6 @@ class _PerfilState extends State<Perfil> with TickerProviderStateMixin {
 
                           Navigator.pop(ctx);
 
-                          // Salva as alterações no banco de dados
                           final sucesso = await AppSession.salvarNoBanco(
                             novoNome: novoNome,
                             novoTelefone: novoTelefone,

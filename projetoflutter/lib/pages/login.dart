@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gif_view/gif_view.dart';
 import 'package:http/http.dart' as http;
-import 'package:projetoflutter/pages/Dashges.dart';
+import 'package:projetoflutter/pages/dashges.dart';
 import 'package:projetoflutter/pages/cadastro.dart';
 import 'package:projetoflutter/pages/dash.dart';
 import 'package:projetoflutter/session.dart';

@@ -45,6 +45,9 @@ class _Formularionr12State extends State<Formularionr12> {
   final TextEditingController _cursoController = TextEditingController();
   final TextEditingController _niController = TextEditingController();
   final TextEditingController _obsController = TextEditingController();
+  final TextEditingController _horimetroInicioController =
+      TextEditingController();
+  final TextEditingController _horimetroFimController = TextEditingController();
 
   DateTime _dataOperacao = DateTime.now();
   String _turnoSelecionado = 'Manhã (7h30-11h30)';
@@ -58,6 +61,30 @@ class _Formularionr12State extends State<Formularionr12> {
   ];
 
   final Map<String, String> _respostasChoice = {};
+  bool _jaNotificouQuaseNoFinal = false;
+
+  void _aoMudarPagina(int page) {
+    setState(() {
+      _currentPage = page;
+    });
+
+    if (page == 4 && !_jaNotificouQuaseNoFinal) {
+      _jaNotificouQuaseNoFinal = true;
+      final respostasDetalhadas =
+          CatalogoPerguntasNR12.gerarRespostasDetalhadas(_respostasChoice);
+      final temAlerta = respostasDetalhadas.any((r) => r.isAlerta);
+
+      AppSession.notificarQuaseNoFinal(
+        equipamento: _niController.text.trim().isNotEmpty
+            ? _niController.text.trim()
+            : (widget.equipamentoInicial ?? 'Torno ROMI - 01'),
+        operador: AppSession.nome,
+        etapaAtual: 5,
+        totalEtapas: 5,
+        temAlertasAteAgora: temAlerta,
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -77,6 +104,8 @@ class _Formularionr12State extends State<Formularionr12> {
     _cursoController.dispose();
     _niController.dispose();
     _obsController.dispose();
+    _horimetroInicioController.dispose();
+    _horimetroFimController.dispose();
     super.dispose();
   }
 
@@ -221,20 +250,68 @@ class _Formularionr12State extends State<Formularionr12> {
 
       if (!mounted) return;
 
-      AppSession.adicionarRegistro(
-        RegistroRecente(
-          titulo: 'Checklist NR-12',
-          equipamento: _niController.text.trim().isNotEmpty
-              ? _niController.text.trim()
-              : (widget.equipamentoInicial ?? 'Torno Mecânico ROMI'),
-          operador: AppSession.nome,
-          turno: _turnoSelecionado,
-          curso: _cursoController.text.trim(),
-          data: DateTime.now(),
-          status: 'Concluído',
-          observacao: _obsController.text.trim(),
-        ),
+      final respostasDetalhadas =
+          CatalogoPerguntasNR12.gerarRespostasDetalhadas(_respostasChoice);
+      final temAlerta = respostasDetalhadas.any((r) => r.isAlerta);
+
+      final novoRegistro = RegistroRecente(
+        titulo: 'Checklist NR-12 Torno Mecânico',
+        equipamento: _niController.text.trim().isNotEmpty
+            ? _niController.text.trim()
+            : (widget.equipamentoInicial ?? 'Torno ROMI - 01'),
+        operador: AppSession.nome,
+        emailOperador: AppSession.email,
+        turno: _turnoSelecionado,
+        curso: _cursoController.text.trim(),
+        data: DateTime.now(),
+        status: temAlerta ? 'Com Ressalva' : 'Concluído',
+        observacao: _obsController.text.trim(),
+        respostasDetalhadas: respostasDetalhadas,
+        respostas: Map<String, String>.from(_respostasChoice),
       );
+
+      final inicio = double.tryParse(
+        _horimetroInicioController.text.replaceAll(',', '.').trim(),
+      );
+      final fim = double.tryParse(
+        _horimetroFimController.text.replaceAll(',', '.').trim(),
+      );
+      final totalHoras = (inicio != null && fim != null && fim >= inicio)
+          ? (fim - inicio)
+          : null;
+
+      await AppSession.salvarInspecaoNoBanco(
+        novoRegistro,
+        horimetroInicio: inicio,
+        horimetroFim: fim,
+        horasTrabalhadas: totalHoras,
+      );
+
+      if (inicio != null && fim != null && fim >= inicio) {
+        final nomeEquip = novoRegistro.equipamento.toLowerCase();
+        final maqEncontrada = AppSession.dashboard.maquinas
+            .cast<MaquinaModel?>()
+            .firstWhere(
+              (m) =>
+                  m != null &&
+                  (m.nome.toLowerCase().contains(nomeEquip) ||
+                      nomeEquip.contains(m.nome.toLowerCase())),
+              orElse: () => AppSession.dashboard.maquinas.isNotEmpty
+                  ? AppSession.dashboard.maquinas.first
+                  : null,
+            );
+
+        if (maqEncontrada != null) {
+          await AppSession.registrarHoras(
+            maquinaId: maqEncontrada.id,
+            horasTrabalhadas: totalHoras ?? (fim - inicio),
+            horimetroInicio: inicio,
+            horimetroFim: fim,
+            observacoes:
+                'Uso registrado no checklist NR-12 - Turno $_turnoSelecionado',
+          );
+        }
+      }
 
       _exibirDialogoSucesso();
     } catch (e) {
@@ -439,11 +516,7 @@ class _Formularionr12State extends State<Formularionr12> {
                   child: PageView(
                     controller: _pageController,
                     physics: const NeverScrollableScrollPhysics(),
-                    onPageChanged: (page) {
-                      setState(() {
-                        _currentPage = page;
-                      });
-                    },
+                    onPageChanged: _aoMudarPagina,
                     children: [
                       _buildPaginaIdentificacao(),
                       _buildPaginaEletricaESeguranca(),
@@ -710,12 +783,133 @@ class _Formularionr12State extends State<Formularionr12> {
           _buildDateField(),
           const SizedBox(height: 14),
           _buildTurnoSelector(),
-          const SizedBox(height: 14),
+          const SizedBox(height: 16),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Máquinas Cadastradas (Tabela Máquinas):',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '${AppSession.dashboard.maquinas.length} disponíveis',
+                style: const TextStyle(color: Colors.white54, fontSize: 10),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: AppSession.dashboard.maquinas.map((maq) {
+                final selecionada =
+                    _niController.text.trim() == maq.nome.trim();
+                return Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: ChoiceChip(
+                    label: Text(
+                      maq.nome,
+                      style: TextStyle(
+                        color: selecionada ? Colors.white : Colors.white70,
+                        fontSize: 11,
+                        fontWeight: selecionada
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                    selected: selecionada,
+                    selectedColor: const Color(0xFFB00404),
+                    backgroundColor: const Color(0xFF1E1E22),
+                    side: BorderSide(
+                      color: selecionada
+                          ? const Color(0xFFE53935)
+                          : Colors.white12,
+                    ),
+                    onSelected: (val) {
+                      if (val) {
+                        setState(() {
+                          _niController.text = maq.nome;
+                        });
+                      }
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+          const SizedBox(height: 12),
           _buildTextField(
             controller: _niController,
-            label: 'Número de identificação do equipamento (NI): *',
+            label: 'Identificação selecionada do equipamento (NI): *',
             hint: 'Ex: ROMI-01, NARDINI-02...',
             icon: Icons.tag,
+          ),
+          const SizedBox(height: 20),
+
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.cyanAccent.withValues(alpha: 0.07),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: Colors.cyanAccent.withValues(alpha: 0.3),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  children: [
+                    Icon(
+                      Icons.timer_outlined,
+                      color: Colors.cyanAccent,
+                      size: 18,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      'Registro de Horímetro (Tabela Horas)',
+                      style: TextStyle(
+                        color: Colors.cyanAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                const Text(
+                  'Informe o horímetro antes e após o uso. Os dados serão salvos automaticamente no banco.',
+                  style: TextStyle(color: Colors.white54, fontSize: 11),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildTextField(
+                        controller: _horimetroInicioController,
+                        label: 'Horímetro Início (h)',
+                        hint: 'Ex: 1420.5',
+                        icon: Icons.play_circle_outline,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: _buildTextField(
+                        controller: _horimetroFimController,
+                        label: 'Horímetro Fim (h)',
+                        hint: 'Ex: 1424.0',
+                        icon: Icons.stop_circle_outlined,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

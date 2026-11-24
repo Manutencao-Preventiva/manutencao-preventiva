@@ -15,15 +15,14 @@ class _DashState extends State<Dash> {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Formularionr12(
-          equipamentoInicial: equipamento,
-        ),
+        builder: (context) => Formularionr12(equipamentoInicial: equipamento),
       ),
     );
     if (mounted) {
       setState(() {});
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -282,7 +281,8 @@ class _DashState extends State<Dash> {
                           imagePath: 'assets/icone-torno-mecanico.png',
                           type: 'Torno Mecânico',
                           name: 'NARDINI',
-                          onTap: () => _abrirChecklist('Torno Mecânico NARDINI'),
+                          onTap: () =>
+                              _abrirChecklist('Torno Mecânico NARDINI'),
                         ),
                       ),
                     ],
@@ -351,7 +351,9 @@ class _DashState extends State<Dash> {
                             horizontal: 16,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF141414).withValues(alpha: 0.75),
+                            color: const Color(
+                              0xFF141414,
+                            ).withValues(alpha: 0.75),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
                               color: Colors.white.withValues(alpha: 0.08),
@@ -388,7 +390,6 @@ class _DashState extends State<Dash> {
                         );
                       }
 
-                      // Pega os 2 registros mais recentes
                       final maisRecentes = registros.take(2).toList();
 
                       return Column(
@@ -471,10 +472,7 @@ class _DashState extends State<Dash> {
                     color: Colors.white.withValues(alpha: 0.1),
                   ),
                 ),
-                child: Image.asset(
-                  iconPath,
-                  fit: BoxFit.contain,
-                ),
+                child: Image.asset(iconPath, fit: BoxFit.contain),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -705,8 +703,10 @@ class _DashState extends State<Dash> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   child: Row(
                     children: [
                       const Icon(Icons.history, color: Color(0xFFB00404)),
